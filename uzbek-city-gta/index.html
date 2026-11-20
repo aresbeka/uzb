@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Uzbek City GTA - Abdurazokov</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <div id="game-container"></div>
+
+  <div id="loading-screen">
+    <div class="loader-box">
+      <h2>UZBEK CITY GTA</h2>
+      <p id="loading-status">3D Shahar yuklanmoqda...</p>
+      <div class="progress-bar"><div id="progress-fill"></div></div>
+    </div>
+  </div>
+
+  <div id="hud-top-left">
+    <div class="money" id="hud-money">$1,250</div>
+    <div class="stars" id="hud-stars">★★☆☆☆</div>
+    <div class="location" id="hud-location">Toshkent — Registon</div>
+  </div>
+
+  <div id="hud-speedo" class="hidden">
+    <div class="speed-val"><span id="speed-num">0</span> <small>KPH</small></div>
+    <div class="car-health-bar"><div id="car-health-fill"></div></div>
+  </div>
+
+  <div id="hud-top-right">
+    <button id="btn-tuning" class="icon-btn" title="Tuning / Rang / Nomer">🎨</button>
+    <button id="btn-music" class="icon-btn" title="Musiqa">🎵</button>
+    <button id="btn-camera" class="icon-btn" title="Kamera">📷</button>
+    <button id="btn-repair" class="icon-btn" title="Ta'mirlash">🔧</button>
+  </div>
+
+  <div id="joystick-zone">
+    <div id="joystick-base">
+      <div id="joystick-stick"></div>
+    </div>
+  </div>
+
+  <div id="controls-right">
+    <button id="btn-enter-car" class="action-btn car-btn">🚗</button>
+    <div id="driving-pedals" class="hidden">
+      <button id="btn-brake" class="pedal-btn brake">TORMOZ</button>
+      <button id="btn-gas" class="pedal-btn gas">GAZ</button>
+    </div>
+    <div id="foot-actions">
+      <button id="btn-jump" class="action-btn jump-btn">⬆️</button>
+    </div>
+  </div>
+
+  <div id="tuning-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Garaj & Tuning</h3>
+        <button id="btn-close-tuning" class="close-btn">✕</button>
+      </div>
+
+      <div class="tuning-section">
+        <label>Mashina tanlash:</label>
+        <div class="btn-row" style="flex-wrap:wrap;">
+          <button class="chip-btn active" data-car="gentra">Gentra</button>
+          <button class="chip-btn" data-car="cobalt">Cobalt</button>
+          <button class="chip-btn" data-car="nexia2">Nexia 2</button>
+          <button class="chip-btn" data-car="damas">Damas</button>
+        </div>
+      </div>
+
+      <div class="tuning-section">
+        <label>Kuzov rangi:</label>
+        <div class="color-row">
+          <button class="color-dot" data-color="#ffffff" style="background:#ffffff"></button>
+          <button class="color-dot" data-color="#111111" style="background:#111111"></button>
+          <button class="color-dot" data-color="#b8bec6" style="background:#b8bec6"></button>
+          <button class="color-dot" data-color="#d92626" style="background:#d92626"></button>
+          <button class="color-dot" data-color="#1d63dc" style="background:#1d63dc"></button>
+          <button class="color-dot" data-color="#1b8a4b" style="background:#1b8a4b"></button>
+          <button class="color-dot" data-color="#e0a800" style="background:#e0a800"></button>
+        </div>
+      </div>
+
+      <div class="tuning-section">
+        <label>Davlat raqami (Nomer):</label>
+        <div class="plate-inputs">
+          <input id="plate-region" type="text" maxlength="2" value="01" placeholder="01" />
+          <input id="plate-code" type="text" maxlength="8" value="A 777 AA" placeholder="A 777 AA" />
+          <button id="btn-apply-plate" class="apply-btn">Qo'yish</button>
+        </div>
+      </div>
+
+      <div class="tuning-section">
+        <button id="btn-repair-modal" class="full-btn">🔧 Mashinani ta'mirlash (Pachoqni tuzatish)</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="watermark">Abdurazokov v2.0 • Uzbek City</div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
