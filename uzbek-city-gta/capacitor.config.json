@@ -1,0 +1,8 @@
+{
+  "appId": "com.abdurazokov.uzbekcity",
+  "appName": "Uzbek City GTA",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": true
+  }
+}
