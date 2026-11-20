@@ -9,6 +9,7 @@
 <body>
   <div id="game-container"></div>
 
+  <!-- Loading Overlay -->
   <div id="loading-screen">
     <div class="loader-box">
       <h2>UZBEK CITY GTA</h2>
@@ -17,17 +18,20 @@
     </div>
   </div>
 
+  <!-- Top-Left HUD -->
   <div id="hud-top-left">
     <div class="money" id="hud-money">$1,250</div>
     <div class="stars" id="hud-stars">★★☆☆☆</div>
     <div class="location" id="hud-location">Toshkent — Registon</div>
   </div>
 
+  <!-- Top-Center Speedometer (visible when driving) -->
   <div id="hud-speedo" class="hidden">
     <div class="speed-val"><span id="speed-num">0</span> <small>KPH</small></div>
     <div class="car-health-bar"><div id="car-health-fill"></div></div>
   </div>
 
+  <!-- Top-Right Action Buttons -->
   <div id="hud-top-right">
     <button id="btn-tuning" class="icon-btn" title="Tuning / Rang / Nomer">🎨</button>
     <button id="btn-music" class="icon-btn" title="Musiqa">🎵</button>
@@ -35,12 +39,14 @@
     <button id="btn-repair" class="icon-btn" title="Ta'mirlash">🔧</button>
   </div>
 
+  <!-- Left Virtual Joystick -->
   <div id="joystick-zone">
     <div id="joystick-base">
       <div id="joystick-stick"></div>
     </div>
   </div>
 
+  <!-- Right Controls (On Foot vs Driving) -->
   <div id="controls-right">
     <button id="btn-enter-car" class="action-btn car-btn">🚗</button>
     <div id="driving-pedals" class="hidden">
@@ -52,6 +58,7 @@
     </div>
   </div>
 
+  <!-- Tuning / Garage Modal -->
   <div id="tuning-modal" class="modal hidden">
     <div class="modal-content">
       <div class="modal-header">
@@ -61,11 +68,9 @@
 
       <div class="tuning-section">
         <label>Mashina tanlash:</label>
-        <div class="btn-row" style="flex-wrap:wrap;">
-          <button class="chip-btn active" data-car="gentra">Gentra</button>
-          <button class="chip-btn" data-car="cobalt">Cobalt</button>
-          <button class="chip-btn" data-car="nexia2">Nexia 2</button>
-          <button class="chip-btn" data-car="damas">Damas</button>
+        <div class="btn-row">
+          <button class="chip-btn active" data-car="gentra">Chevrolet Gentra</button>
+          <button class="chip-btn" data-car="damas">Chevrolet Damas</button>
         </div>
       </div>
 
@@ -98,6 +103,7 @@
   </div>
 
   <div id="watermark">Abdurazokov v2.0 • Uzbek City</div>
+
   <script type="module" src="./src/main.js"></script>
 </body>
 </html>
