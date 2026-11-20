@@ -1,0 +1,395 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0d131a;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  touch-action: none;
+}
+
+#game-container {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Loading Screen */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: radial-gradient(circle at center, #1c2836 0%, #0b1016 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.loader-box {
+  width: 82%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.loader-box h2 {
+  letter-spacing: 2px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #38d37c;
+}
+
+.loader-box p {
+  font-size: 14px;
+  color: #b7c4d1;
+  margin-bottom: 14px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+#progress-fill {
+  width: 10%;
+  height: 100%;
+  background: linear-gradient(90deg, #27ae60, #38d37c);
+  transition: width 0.25s ease;
+}
+
+/* HUD Top Left */
+#hud-top-left {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  background: rgba(12, 16, 22, 0.72);
+  backdrop-filter: blur(6px);
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+#hud-top-left .money {
+  font-size: 20px;
+  font-weight: 800;
+  color: #38d37c;
+}
+
+#hud-top-left .stars {
+  font-size: 14px;
+  color: #f6c343;
+  letter-spacing: 2px;
+}
+
+#hud-top-left .location {
+  font-size: 11px;
+  color: #9cb0c4;
+  margin-top: 2px;
+}
+
+/* Speedometer */
+#hud-speedo {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(12, 16, 22, 0.76);
+  padding: 6px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  text-align: center;
+  min-width: 120px;
+}
+
+.speed-val {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.speed-val small {
+  font-size: 11px;
+  color: #9cb0c4;
+}
+
+.car-health-bar {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+#car-health-fill {
+  width: 100%;
+  height: 100%;
+  background: #38d37c;
+  transition: width 0.2s;
+}
+
+/* HUD Top Right */
+#hud-top-right {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 16, 22, 0.75);
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-btn.active {
+  background: #27ae60;
+  border-color: #38d37c;
+}
+
+/* Joystick */
+#joystick-zone {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  width: 130px;
+  height: 130px;
+}
+
+#joystick-base {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+#joystick-stick {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.78);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Right Controls */
+#controls-right {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.action-btn {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  font-size: 24px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-btn {
+  background: rgba(243, 156, 18, 0.85);
+}
+
+.jump-btn {
+  background: rgba(52, 152, 219, 0.85);
+}
+
+#driving-pedals {
+  display: flex;
+  gap: 12px;
+}
+
+.pedal-btn {
+  width: 72px;
+  height: 86px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.pedal-btn.brake {
+  background: rgba(214, 48, 49, 0.82);
+}
+
+.pedal-btn.gas {
+  background: rgba(39, 174, 96, 0.85);
+}
+
+/* Tuning Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 380px;
+  background: #17202b;
+  color: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.close-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+.tuning-section {
+  margin-bottom: 14px;
+}
+
+.tuning-section label {
+  display: block;
+  font-size: 13px;
+  color: #9cb0c4;
+  margin-bottom: 6px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+}
+
+.chip-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #223040;
+  color: #fff;
+  font-weight: 600;
+}
+
+.chip-btn.active {
+  background: #27ae60;
+  border-color: #38d37c;
+}
+
+.color-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+}
+
+.plate-inputs {
+  display: flex;
+  gap: 6px;
+}
+
+.plate-inputs input {
+  background: #0f151d;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+#plate-region {
+  width: 48px;
+  text-align: center;
+}
+
+#plate-code {
+  flex: 1;
+}
+
+.apply-btn, .full-btn {
+  background: #2980b9;
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.full-btn {
+  width: 100%;
+  padding: 10px;
+  background: #27ae60;
+}
+
+#watermark {
+  position: fixed;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
